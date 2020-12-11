@@ -10,9 +10,13 @@ func NewClient(
 	config ClientConfig,
 	logger log.Logger,
 ) (Client, error) {
-	httpClient, err := http.NewClient(config.ClientConfiguration, logger)
-	if err != nil {
-		return nil, err
+	var httpClient http.Client
+	var err error
+	if config.ClientConfiguration.Url != "" {
+		httpClient, err = http.NewClient(config.ClientConfiguration, logger)
+		if err != nil {
+			return nil, err
+		}
 	}
 	return &client{
 		httpClient: httpClient,
