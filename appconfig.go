@@ -13,6 +13,8 @@ import (
 
 // AppConfig is the root configuration object of ContainerSSH.
 type AppConfig struct {
+	// Listen is an alias for ssh.listen. Its usage is deprecated.
+	Listen string `json:"listen,omitempty" yaml:"listen,omitempty" default:""`
 	// SSH contains the configuration for the SSH server.
 	// swagger:ignore
 	SSH sshserver.Config `json:"ssh" yaml:"ssh" comment:"SSH configuration"`
@@ -41,4 +43,17 @@ type AppConfig struct {
 	DockerRun dockerrun.Config `json:"dockerrun" yaml:"dockerrun" comment:"Docker configuration to use when the Docker run backend is used."`
 	// KubeRun contains the configuration for the kuberun backend.
 	KubeRun kuberun.Config `json:"kuberun" yaml:"kuberun" comment:"Kubernetes configuration to use when the Kubernetes run backend is used."`
+}
+
+func (cfg *AppConfig) FixCompatibility(logger log.Logger) error {
+	if cfg.Listen != "" {
+		if cfg.SSH.Listen == "" || cfg.SSH.Listen == "0.0.0.0:2222" {
+			logger.Warningf("you are using the deprecated 'listen' option for SSH listen socket instead of the new 'ssh -> listen', please change your configuration")
+			cfg.SSH.Listen = cfg.Listen
+			cfg.Listen = ""
+		} else {
+			logger.Warningf("you are using both the deprecated 'listen' and the new 'ssh -> listen' options, the new option takes precedence")
+		}
+	}
+	return nil
 }
