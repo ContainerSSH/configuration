@@ -178,7 +178,11 @@ This library also provides simplified methods for reading the configuration from
 ```go
 file, err := os.Open("file.yaml")
 // ...
-loader, err := configuration.NewReaderLoader(file)
+loader, err := configuration.NewReaderLoader(
+	file,
+    logger,
+    configuration.FormatYAML,
+)
 // Read global config
 appConfig := &configuration.AppConfig{}
 err := loader.Load(ctx, appConfig)
@@ -206,6 +210,10 @@ This HTTP loader calls the HTTP client described above.
 Conversely, you can write the configuration to a YAML format:
 
 ```go
-saver, err := configuration.NewWriterSaver(os.Stdout)
+saver, err := configuration.NewWriterSaver(
+    os.Stdout,
+    logger,
+    configuration.FormatYAML,
+)
 err := saver.Save(appConfig)
 ```
