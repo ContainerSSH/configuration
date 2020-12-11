@@ -21,6 +21,9 @@ func (c *client) Get(
 	remoteAddr net.TCPAddr,
 	connectionID string,
 ) (AppConfig, error) {
+	if c.httpClient == nil {
+		return AppConfig{}, nil
+	}
 	request := ConfigRequest{
 		Username:     username,
 		RemoteAddr:   remoteAddr.IP.String(),
@@ -29,7 +32,7 @@ func (c *client) Get(
 	}
 	response := ConfigResponseBody{}
 	var lastError error = nil
-	loop:
+loop:
 	for {
 		statusCode, err := c.httpClient.Post("", &request, &response)
 		lastError = err
@@ -45,7 +48,7 @@ func (c *client) Get(
 		select {
 		case <-ctx.Done():
 			break loop
-		case <- time.After(10 * time.Second):
+		case <-time.After(10 * time.Second):
 		}
 	}
 	if lastError != nil {
