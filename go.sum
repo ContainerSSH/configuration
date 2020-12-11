@@ -84,6 +84,8 @@ github.com/aws/aws-sdk-go v1.36.2 h1:UAeFPct+jHqWM+tgiqDrC9/sfbWj6wkcvpsJ+zdcsvA
 github.com/aws/aws-sdk-go v1.36.2/go.mod h1:hcU610XS61/+aQV88ixoOzUoG7v3b31pl2zKMmprdro=
 github.com/aws/aws-sdk-go v1.36.6 h1:IjC7EpapQ7+LMg8cD6lVcdtnSH2Di7amGdPWobwb+ps=
 github.com/aws/aws-sdk-go v1.36.6/go.mod h1:hcU610XS61/+aQV88ixoOzUoG7v3b31pl2zKMmprdro=
+github.com/aws/aws-sdk-go v1.36.7 h1:XoJPAjKoqvdL531XGWxKYn5eGX/xMoXzMN5fBtoyfSY=
+github.com/aws/aws-sdk-go v1.36.7/go.mod h1:hcU610XS61/+aQV88ixoOzUoG7v3b31pl2zKMmprdro=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
@@ -107,6 +109,8 @@ github.com/containerssh/auditlog v0.9.1 h1:oG+QoG56OqCsN59Sytyb74CNjQEpyJL6KKvbW
 github.com/containerssh/auditlog v0.9.1/go.mod h1:3f6FQRiwm4vxqLyuco7SetKAssDEomsX9AA8Y05y0h8=
 github.com/containerssh/auditlog v0.9.3 h1:vDMFOlLUuv+HGo14yiZfgZc8PZAQd2QINiuu9HdaTiQ=
 github.com/containerssh/auditlog v0.9.3/go.mod h1:CAWLpBRtG0G2ENe3z5UXlcrPcvMe7Q1edkF9DcU2KCI=
+github.com/containerssh/auditlog v0.9.5 h1:kbtC+XPTKDyIVXZX18rO2n6TG++wCJwLVi0kMhIo3V4=
+github.com/containerssh/auditlog v0.9.5/go.mod h1:ezrNeyCAfzmO1kDlQf2XbmbBNP7jZTKTO1+3lPmS6s0=
 github.com/containerssh/auth v0.9.0 h1:Zhtpy6tlA2c996EdDTK0jnsgkXOnlwln7GvmsJuVjrI=
 github.com/containerssh/auth v0.9.0/go.mod h1:NzWBDCe7kKqiui1CtL9bP0Q62jb1ToeQkj75r3T85vg=
 github.com/containerssh/auth v0.9.1 h1:jvrBHerVmK2XE8L0kp3j+dCu3FNR4v8HB/eUmYs87wg=
@@ -134,6 +138,8 @@ github.com/containerssh/kuberun v0.9.0 h1:HKfdB80f5Cm6A45EDPfu8QfUSRFnhk9KIiRiFU
 github.com/containerssh/kuberun v0.9.0/go.mod h1:DGP9cHFA9ylCSts1MrtbZhIVGEINOPIyp+GTzUIfkkA=
 github.com/containerssh/kuberun v0.9.1 h1:ZEkO+BpwU5pxi0hy91yRtwAsALWLFGSRSjBd+f9clX0=
 github.com/containerssh/kuberun v0.9.1/go.mod h1:dxrpaWUty5h1G491BGRjs5nglAtaEAbrnxpRac4HKYE=
+github.com/containerssh/kuberun v0.9.2 h1:hivUJPftH6WQXU6CWtgCZd4fMgQ5kbafTvNwOCafU9s=
+github.com/containerssh/kuberun v0.9.2/go.mod h1:OipGNOtanF3w9Ays/sHbIs5/LyrXkpefHI32/D5vZcw=
 github.com/containerssh/log v0.9.1/go.mod h1:05pgNm7IgFKt+qbZiUhtuJw2B4j3ynn2vSv5j2JA7hA=
 github.com/containerssh/log v0.9.2 h1:QngZdg3EFvFxthpJY4X2qgVwqSHFTzHJ2kCiQkR7FLQ=
 github.com/containerssh/log v0.9.2/go.mod h1:05pgNm7IgFKt+qbZiUhtuJw2B4j3ynn2vSv5j2JA7hA=
@@ -162,6 +168,9 @@ github.com/containerssh/sshserver v0.9.8 h1:y4bTUBXmdp9TZQdIQ3CJvmaAwExxE/O8+HDG
 github.com/containerssh/sshserver v0.9.8/go.mod h1:sX9Z1ch2yFk30MXQvOKLa8h9V4wex0Nct2mNGYHBTbY=
 github.com/containerssh/sshserver v0.9.9 h1:5rIY0bQEp5/8gZzPnZp6vEyh+XDnx/cs73QNs3gEIZ0=
 github.com/containerssh/sshserver v0.9.9/go.mod h1:HNqF8jgLd+nFJV0K29tV7oUD1KJC8b/49fRZNnCpO00=
+github.com/containerssh/sshserver v0.9.10/go.mod h1:HNqF8jgLd+nFJV0K29tV7oUD1KJC8b/49fRZNnCpO00=
+github.com/containerssh/sshserver v0.9.11 h1:vrRr3BtMVD2nIciPK7Oa3+ncGOe5O8h89MPm23+aIpA=
+github.com/containerssh/sshserver v0.9.11/go.mod h1:GOr/SHQvoJpt/yoztX0a9QfKMbixd42GrLZk6YASSvw=
 github.com/containerssh/structutils v0.9.0 h1:pz4xl5ZrPnpdSx7B/ru8Fj3oU3vOtx1jprIuSkm5s7o=
 github.com/containerssh/structutils v0.9.0/go.mod h1:zirdwNXan3kuTpsJp9Gl3W6VQz0fexqMySqxmfviSjw=
 github.com/containerssh/unixutils v0.9.0 h1:9Bh2UiQW6DIuVW6upc1uUU38tKK1IUn2hxZqi9w3cQc=
@@ -692,6 +701,8 @@ golang.org/x/sys v0.0.0-20201204225414-ed752295db88 h1:KmZPnMocC93w341XZp26yTJg8
 golang.org/x/sys v0.0.0-20201204225414-ed752295db88/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d h1:MiWWjyhUzZ+jvhZvloX6ZrUsdEghn8a64Upd8EMHglE=
 golang.org/x/sys v0.0.0-20201207223542-d4d67f95c62d/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20201211090839-8ad439b19e0f h1:QdHQnPce6K4XQewki9WNbG5KOROuDzqO3NaYjI1cXJ0=
+golang.org/x/sys v0.0.0-20201211090839-8ad439b19e0f/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/term v0.0.0-20201117132131-f5c789dd3221 h1:/ZHdbVpdR/jk3g30/d4yUL0JU9kksj8+F/bnQUVLGDM=
 golang.org/x/term v0.0.0-20201117132131-f5c789dd3221/go.mod h1:Nr5EML6q2oocZ2LXRh80K7BxOlk5/8JxuGnuhpl+muw=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1 h1:v+OssWQX+hTHEmOBgwxdZxK4zHq3yOs8F9J7mk0PY8E=
@@ -827,6 +838,8 @@ google.golang.org/genproto v0.0.0-20201019141844-1ed22bb0c154 h1:bFFRpT+e8JJVY7l
 google.golang.org/genproto v0.0.0-20201019141844-1ed22bb0c154/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/genproto v0.0.0-20201210142538-e3217bee35cc h1:BgQmMjmd7K1zov8j8lYULHW0WnmBGUIMp6+VDwlGErc=
 google.golang.org/genproto v0.0.0-20201210142538-e3217bee35cc/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
+google.golang.org/genproto v0.0.0-20201211151036-40ec1c210f7a h1:GnJAhasbD8HiT8DZMvsEx3QLVy/X0icq/MGr0MqRJ2M=
+google.golang.org/genproto v0.0.0-20201211151036-40ec1c210f7a/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/grpc v1.19.0/go.mod h1:mqu4LbDTu4XGKhr4mRzUsmM4RtVoemTSY81AxZiDr8c=
 google.golang.org/grpc v1.20.1/go.mod h1:10oTOabMzJvdu6/UiuZezV6QK5dSlG84ov/aaiqXj38=
 google.golang.org/grpc v1.21.0/go.mod h1:oYelfM1adQP15Ek0mdvEgi9Df8B9CZIaU1084ijfRaM=
