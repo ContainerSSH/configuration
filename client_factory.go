@@ -12,7 +12,7 @@ func NewClient(
 ) (Client, error) {
 	var httpClient http.Client
 	var err error
-	if config.ClientConfiguration.Url != "" {
+	if config.ClientConfiguration.URL != "" {
 		httpClient, err = http.NewClient(config.ClientConfiguration, logger)
 		if err != nil {
 			return nil, err

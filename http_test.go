@@ -42,7 +42,7 @@ func TestHTTP(t *testing.T) {
 
 	client, err := configuration.NewClient(configuration.ClientConfig{
 		http.ClientConfiguration{
-			Url: "http://127.0.0.1:8080",
+			URL: "http://127.0.0.1:8080",
 		},
 	}, logger)
 	assert.NilError(t, err)

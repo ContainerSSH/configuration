@@ -145,7 +145,7 @@ This library also contains the components to call the configuration server in a 
 client, err := configuration.NewClient(
 	configuration.ClientConfig{
         http.ClientConfiguration{
-            Url: "http://your-server/config-endpoint/"
+            URL: "http://your-server/config-endpoint/"
         }
     },
 	logger,
