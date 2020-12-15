@@ -79,8 +79,8 @@ github.com/containerssh/http v0.9.2 h1:ZvGaQy/xxNE+UGavsyp2bYwagz9/s+c11wVQoCQXR
 github.com/containerssh/http v0.9.2/go.mod h1:ZuPYt0qDhZ4FRWRf/gUyG/VChNRIMd4N7gSA3Qs3SCI=
 github.com/containerssh/http v0.9.4 h1:jgzT8T8hT/gE3PEpdeQl1fC1cm+cAuT7raP8UxEpNPQ=
 github.com/containerssh/http v0.9.4/go.mod h1:KTBEbXRSdllIGOb+O6AURBCG+9vCEyo6AI+JCrI94Cw=
-github.com/containerssh/kuberun v0.9.2 h1:hivUJPftH6WQXU6CWtgCZd4fMgQ5kbafTvNwOCafU9s=
-github.com/containerssh/kuberun v0.9.2/go.mod h1:OipGNOtanF3w9Ays/sHbIs5/LyrXkpefHI32/D5vZcw=
+github.com/containerssh/kuberun v0.9.3 h1:njQGsdA4ccmh0V+niVT8X3B6KTm/jCwKIygMeyebF/g=
+github.com/containerssh/kuberun v0.9.3/go.mod h1:OipGNOtanF3w9Ays/sHbIs5/LyrXkpefHI32/D5vZcw=
 github.com/containerssh/log v0.9.2 h1:QngZdg3EFvFxthpJY4X2qgVwqSHFTzHJ2kCiQkR7FLQ=
 github.com/containerssh/log v0.9.2/go.mod h1:05pgNm7IgFKt+qbZiUhtuJw2B4j3ynn2vSv5j2JA7hA=
 github.com/containerssh/log v0.9.4 h1:/pyDm7wL/nZPzeX9b3HFDcOElGjZm8DlwAYhUuVmnP0=
