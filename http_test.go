@@ -6,10 +6,12 @@ import (
 	"os"
 	"testing"
 
+	"github.com/containerssh/geoip"
 	"github.com/containerssh/http"
 	"github.com/containerssh/log"
+	"github.com/containerssh/metrics"
 	"github.com/containerssh/service"
-	"gotest.tools/assert"
+	"github.com/stretchr/testify/assert"
 
 	"github.com/containerssh/configuration"
 )
@@ -19,7 +21,7 @@ func TestHTTP(t *testing.T) {
 		Level:  log.LevelDebug,
 		Format: "text",
 	}, "config", os.Stdout)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 	srv, err := configuration.NewServer(
 		http.ServerConfiguration{
 			Listen: "127.0.0.1:8080",
@@ -27,7 +29,7 @@ func TestHTTP(t *testing.T) {
 		&myConfigReqHandler{},
 		logger,
 	)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 	lifecycle := service.NewLifecycle(srv)
 
 	ready := make(chan struct{})
@@ -40,12 +42,14 @@ func TestHTTP(t *testing.T) {
 	}()
 	<-ready
 
-	client, err := configuration.NewClient(configuration.ClientConfig{
-		http.ClientConfiguration{
-			URL: "http://127.0.0.1:8080",
-		},
-	}, logger)
-	assert.NilError(t, err)
+	client, err := configuration.NewClient(
+		configuration.ClientConfig{
+			ClientConfiguration: http.ClientConfiguration{
+				URL: "http://127.0.0.1:8080",
+			},
+		}, logger, getMetricsCollector(t),
+	)
+	assert.NoError(t, err)
 
 	connectionID := "0123456789ABCDEF"
 
@@ -58,12 +62,20 @@ func TestHTTP(t *testing.T) {
 		},
 		connectionID,
 	)
-	assert.NilError(t, err)
+	assert.NoError(t, err)
 	assert.Equal(t, "yourcompany/yourimage", config.DockerRun.Config.ContainerConfig.Image)
 
 	lifecycle.Stop(context.Background())
 	err = lifecycle.Wait()
-	assert.NilError(t, err)
+	assert.NoError(t, err)
+}
+
+func getMetricsCollector(t *testing.T) metrics.Collector {
+	geoIP, err := geoip.New(geoip.Config{
+		Provider: "dummy",
+	})
+	assert.NoError(t, err)
+	return metrics.New(geoIP)
 }
 
 type myConfigReqHandler struct {

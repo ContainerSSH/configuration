@@ -5,6 +5,7 @@ import (
 	"net"
 
 	"github.com/containerssh/log"
+	"github.com/containerssh/metrics"
 	"github.com/containerssh/structutils"
 )
 
@@ -13,8 +14,9 @@ import (
 func NewHTTPLoader(
 	config ClientConfig,
 	logger log.Logger,
+	metricsCollector metrics.Collector,
 ) (Loader, error) {
-	client, err := NewClient(config, logger)
+	client, err := NewClient(config, logger, metricsCollector)
 	if err != nil {
 		return nil, err
 	}

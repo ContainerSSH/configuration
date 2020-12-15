@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.3: Metrics integration
+
+This release integrates the [metrics library](https://github.com/containerssh/metrics) which is now required as a dependency when creating a HTTP client.
+
 ## 0.9.2: Bumped HTTP dependency
 
 This release bumps the [http](https://github.com/containerssh/http) dependency to 0.9.2 and changes the `Url` to `URL` in the setting.
