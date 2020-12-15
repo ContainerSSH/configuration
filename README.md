@@ -149,8 +149,11 @@ client, err := configuration.NewClient(
         }
     },
 	logger,
+    metricsCollector,
 )
 ```
+
+The `logger` is a logger from the [log library](https://github.com/containerssh/log), the `metricsCollector` is supplied by the [metrics library](https://github.com/containerssh/metrics). 
 
 You can now use the `client` variable to fetch the configuration specific to a connecting client:
 
