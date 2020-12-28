@@ -1,12 +1,13 @@
 package configuration_test
 
 import (
-	"bufio"
 	"bytes"
 	"context"
 	"os"
 	"testing"
 
+	"github.com/containerssh/docker"
+	"github.com/containerssh/kubernetes"
 	"github.com/containerssh/log"
 	"github.com/containerssh/structutils"
 	"github.com/google/go-cmp/cmp"
@@ -25,6 +26,7 @@ func TestSaveLoadJSON(t *testing.T) {
 }
 
 func testSaveLoad(t *testing.T, format configuration.Format) {
+	// region Setup
 	logger, err := log.New(
 		log.Config{
 			Level:  log.LevelDebug,
@@ -40,29 +42,36 @@ func testSaveLoad(t *testing.T, format configuration.Format) {
 	structutils.Defaults(config)
 
 	buf := &bytes.Buffer{}
-	writer := bufio.NewWriter(buf)
-	reader := bufio.NewReader(buf)
+	// endregion
 
+	// region Save
 	saver, err := configuration.NewWriterSaver(
-		writer,
+		buf,
 		logger,
 		format,
 	)
 	assert.NoError(t, err)
-
-	loader, err := configuration.NewReaderLoader(reader, logger, format)
-	assert.Nil(t, err, "failed to create reader (%v)", err)
-
 	err = saver.Save(config)
 	assert.Nil(t, err, "failed to load config (%v)", err)
-	assert.NoError(t, writer.Flush())
+	// endregion
 
+	// region Load
+	loader, err := configuration.NewReaderLoader(buf, logger, format)
+	assert.Nil(t, err, "failed to create reader (%v)", err)
 	err = loader.Load(context.Background(), newCfg)
 	assert.Nil(t, err, "failed to load config (%v)", err)
+	// endregion
 
-	// The Listen configuration is removed on purpose after load because it's a deprecated field.
+	// region Assert
 	config.Listen = ""
 
-	diff := cmp.Diff(config, newCfg, cmpopts.EquateEmpty())
+	diff := cmp.Diff(
+		config,
+		newCfg,
+		cmp.AllowUnexported(kubernetes.PodConfig{}),
+		cmp.AllowUnexported(docker.ExecutionConfig{}),
+		cmpopts.EquateEmpty(),
+	)
 	assert.Empty(t, diff)
+	// endregion
 }

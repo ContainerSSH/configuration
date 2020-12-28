@@ -11,6 +11,7 @@ import (
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
 	"github.com/containerssh/service"
+	"github.com/docker/docker/api/types/container"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/containerssh/configuration"
@@ -63,7 +64,7 @@ func TestHTTP(t *testing.T) {
 		connectionID,
 	)
 	assert.NoError(t, err)
-	assert.Equal(t, "yourcompany/yourimage", config.DockerRun.Config.ContainerConfig.Image)
+	assert.Equal(t, "yourcompany/yourimage", config.Docker.Execution.Launch.ContainerConfig.Image)
 
 	lifecycle.Stop(context.Background())
 	err = lifecycle.Wait()
@@ -84,9 +85,10 @@ type myConfigReqHandler struct {
 func (m *myConfigReqHandler) OnConfig(
 	request configuration.ConfigRequest,
 ) (config configuration.AppConfig, err error) {
-	// We recommend using an IDE to discover the possible options here.
+	config.Backend = "docker"
+	config.Docker.Execution.Launch.ContainerConfig = &container.Config{}
 	if request.Username == "foo" {
-		config.DockerRun.Config.ContainerConfig.Image = "yourcompany/yourimage"
+		config.Docker.Execution.Launch.ContainerConfig.Image = "yourcompany/yourimage"
 	}
 	return config, err
 }
