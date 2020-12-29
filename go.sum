@@ -66,8 +66,8 @@ github.com/containerssh/log v0.9.6 h1:K3/RjrKnTfT1jBe+9PxMdFrZkLSmXQapZD4wcSFGe5
 github.com/containerssh/log v0.9.6/go.mod h1:P/tea/If6kzzfqlZdmqNp5SOpD6CD/OvmvcOK+vbweI=
 github.com/containerssh/log v0.9.7 h1:T1FxnEtGMbyJJ7C66dDr6k2RwTnSpVGE5U5apr5pB78=
 github.com/containerssh/log v0.9.7/go.mod h1:NBMzkhOLZ4z45ShSBKQ/Ij6Hqqg15DgOKy6HlSITx0s=
-github.com/containerssh/metrics v0.9.3 h1:OIXMw4eFi6xbFKtiuwamz2FCa2gFOXOtTHXqGYZzsX0=
-github.com/containerssh/metrics v0.9.3/go.mod h1:n5Itoucb/uFRAUevBfnyKFw+il52uYVbDFmV/smgias=
+github.com/containerssh/metrics v0.9.5 h1:VGP/bwoY4UhdP8G9h30QWZIf9P31tl9OURYOoZpKIY4=
+github.com/containerssh/metrics v0.9.5/go.mod h1:vWSPzmiVZznPBFdPnt89cHzWLuEGiExEmeUkTJRDne0=
 github.com/containerssh/security v0.9.0 h1:kzL7gHdUsWoz42mLt6Yswf14qIdlo4IOMUI8bq6Kr8c=
 github.com/containerssh/security v0.9.0/go.mod h1:9hXUhtRAUZJpeemCl53OdsR0WZTky2G/L7WTThCdt9w=
 github.com/containerssh/service v0.9.0 h1:JUHqiK12tclq7EWQYGRTfgKKw6fhHs0gxlKWTvVwFlQ=
