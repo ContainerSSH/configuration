@@ -8,6 +8,7 @@ import (
 	"github.com/containerssh/kubernetes"
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
+	"github.com/containerssh/security"
 	"github.com/containerssh/sshserver"
 )
 
@@ -37,6 +38,9 @@ type AppConfig struct {
 	// Audit contains the configuration for audit logging and log upload.
 	// swagger:ignore
 	Audit auditlog.Config `json:"audit" yaml:"audit" comment:"Audit configuration"`
+
+	// Security contains the security restrictions on what can be executed.
+	Security security.Config `json:"security" yaml:"security" comment:"Security configuration"`
 
 	// Backend defines which backend to use. This option can be changed from the config server.
 	Backend string `json:"backend" yaml:"backend" default:"dockerrun" comment:"Backend module to use"`

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.5: Security configuration
+
+This release adds support for the new [security library](https://github.com/containerssh/security).
+
 ## 0.9.4: New docker and kubernetes backends
 
 This release adds support for the new [docker](https://github.com/containerssh/docker) and [kubernetes](https://github.com/containerssh/kubernetes) backends.
