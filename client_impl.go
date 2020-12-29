@@ -14,9 +14,10 @@ import (
 )
 
 type client struct {
-	httpClient           http.Client
-	logger               log.Logger
-	backendFailureMetric metrics.SimpleCounter
+	httpClient            http.Client
+	logger                log.Logger
+	backendRequestsMetric metrics.SimpleCounter
+	backendFailureMetric  metrics.SimpleCounter
 }
 
 func (c *client) Get(
@@ -34,6 +35,7 @@ func (c *client) Get(
 loop:
 	for {
 		lastLabels = []metrics.MetricLabel{}
+		c.backendRequestsMetric.Increment()
 		statusCode, err := c.httpClient.Post("", &request, &response)
 		lastError = err
 		if err != nil {

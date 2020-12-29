@@ -6,6 +6,9 @@ import (
 	"github.com/containerssh/metrics"
 )
 
+// MetricNameConfigBackendRequests is the number of requests to the config server
+const MetricNameConfigBackendRequests = "containerssh_config_server_requests"
+
 // MetricNameConfigBackendFailure is the number of request failures to the configuration backend.
 const MetricNameConfigBackendFailure = "containerssh_config_server_failures"
 
@@ -23,17 +26,20 @@ func NewClient(
 			return nil, err
 		}
 	}
-	backendFailureMetric, err := metricsCollector.CreateCounter(
-		MetricNameConfigBackendFailure,
-		"",
-		"The number of request failures to the configuration backend.",
+	backendRequestsMetric := metricsCollector.MustCreateCounter(
+		MetricNameConfigBackendRequests,
+		"requests",
+		"The number of requests sent to the configuration server.",
 	)
-	if err != nil {
-		return nil, err
-	}
+	backendFailureMetric := metricsCollector.MustCreateCounter(
+		MetricNameConfigBackendFailure,
+		"requests",
+		"The number of request failures to the configuration server.",
+	)
 	return &client{
-		httpClient:           httpClient,
-		logger:               logger,
-		backendFailureMetric: backendFailureMetric,
+		httpClient:            httpClient,
+		logger:                logger,
+		backendRequestsMetric: backendRequestsMetric,
+		backendFailureMetric:  backendFailureMetric,
 	}, nil
 }
