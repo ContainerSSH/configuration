@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/containerssh/docker"
+	"github.com/containerssh/http"
 	"github.com/containerssh/kubernetes"
 	"github.com/containerssh/log"
 	"github.com/containerssh/structutils"
@@ -41,6 +42,8 @@ func testSaveLoad(t *testing.T, format configuration.Format) {
 	newCfg := &configuration.AppConfig{}
 	structutils.Defaults(config)
 
+	config.Auth.URL = "http://localhost:8080"
+
 	buf := &bytes.Buffer{}
 	// endregion
 
@@ -68,6 +71,9 @@ func testSaveLoad(t *testing.T, format configuration.Format) {
 	diff := cmp.Diff(
 		config,
 		newCfg,
+		cmp.AllowUnexported(http.ServerConfiguration{}),
+		cmp.AllowUnexported(http.ClientConfiguration{}),
+		cmp.AllowUnexported(configuration.ClientConfig{}),
 		cmp.AllowUnexported(kubernetes.PodConfig{}),
 		cmp.AllowUnexported(docker.ExecutionConfig{}),
 		cmpopts.EquateEmpty(),

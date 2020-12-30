@@ -1,6 +1,8 @@
 package configuration
 
 import (
+	"fmt"
+
 	"github.com/containerssh/auditlog"
 	"github.com/containerssh/auth"
 	"github.com/containerssh/docker"
@@ -16,42 +18,49 @@ import (
 //goland:noinspection GoDeprecation
 type AppConfig struct {
 	// Listen is an alias for ssh.listen. Its usage is deprecated.
+	// swagger:ignore
+	// deprecated: use SSH.Listen instead
 	Listen string `json:"listen,omitempty" yaml:"listen,omitempty" default:""`
 	// SSH contains the configuration for the SSH server.
 	// swagger:ignore
-	SSH sshserver.Config `json:"ssh" yaml:"ssh" comment:"SSH configuration"`
+	SSH sshserver.Config `json:"ssh" yaml:"ssh"`
 	// ConfigServer contains the settings for fetching the user-specific configuration.
 	// swagger:ignore
-	ConfigServer ClientConfig `json:"configserver" yaml:"configserver" comment:"Configuration server settings"`
+	ConfigServer ClientConfig `json:"configserver" yaml:"configserver"`
 	// Auth contains the configuration for user authentication.
 	// swagger:ignore
-	Auth auth.ClientConfig `json:"auth" yaml:"auth" comment:"Authentication server configuration"`
+	Auth auth.ClientConfig `json:"auth" yaml:"auth"`
 	// Log contains the configuration for the logging level.
 	// swagger:ignore
-	Log log.Config `json:"log" yaml:"log" comment:"Log configuration"`
+	Log log.Config `json:"log" yaml:"log"`
 	// Metrics contains the configuration for the metrics server.
 	// swagger:ignore
-	Metrics metrics.Config `json:"metrics" yaml:"metrics" comment:"Metrics configuration."`
+	Metrics metrics.Config `json:"metrics" yaml:"metrics"`
 	// GeoIP contains the configuration for the GeoIP lookups.
 	// swagger:ignore
-	GeoIP geoip.Config `json:"geoip" yaml:"geoip" comment:"GeoIP database"`
+	GeoIP geoip.Config `json:"geoip" yaml:"geoip"`
 	// Audit contains the configuration for audit logging and log upload.
 	// swagger:ignore
-	Audit auditlog.Config `json:"audit" yaml:"audit" comment:"Audit configuration"`
+	Audit auditlog.Config `json:"audit" yaml:"audit"`
 
-	// Security contains the security restrictions on what can be executed.
-	Security security.Config `json:"security" yaml:"security" comment:"Security configuration"`
-
+	// Security contains the security restrictions on what can be executed. This option can be changed from the config
+	// server.
+	Security security.Config `json:"security" yaml:"security"`
 	// Backend defines which backend to use. This option can be changed from the config server.
-	Backend string `json:"backend" yaml:"backend" default:"dockerrun" comment:"Backend module to use"`
-	// Docker contains the configuration for the docker backend.
-	Docker docker.Config `json:"docker,omitempty" yaml:"docker" comment:"Docker configuration to use when the Docker backend is used."`
-	// DockerRun contains the configuration for the deprecated dockerrun backend.
-	DockerRun docker.DockerRunConfig `json:"dockerrun,omitempty" yaml:"dockerrun" comment:"Docker configuration to use when the Docker run backend is used."`
-	// Kubernetes contains the configuration for the kubernetes backend.
-	Kubernetes kubernetes.Config `json:"kubernetes,omitempty" yaml:"kubernetes" comment:"Kubernetes configuration to use when the kubernetes run backend is used."`
-	// KubeRun contains the configuration for the deprecated kuberun backend.
-	KubeRun kubernetes.KubeRunConfig `json:"kuberun,omitempty" yaml:"kuberun" comment:"Kubernetes configuration to use when the kuberun run backend is used."`
+	Backend string `json:"backend" yaml:"backend" default:"docker"`
+	// Docker contains the configuration for the docker backend. This option can be changed from the config server.
+	Docker docker.Config `json:"docker,omitempty" yaml:"docker"`
+	// DockerRun contains the configuration for the deprecated dockerrun backend. This option can be changed from the
+	// config server.
+	// deprecated: use Docker instead
+	DockerRun docker.DockerRunConfig `json:"dockerrun,omitempty" yaml:"dockerrun"`
+	// Kubernetes contains the configuration for the kubernetes backend. This option can be changed from the config
+	// server.
+	Kubernetes kubernetes.Config `json:"kubernetes,omitempty" yaml:"kubernetes"`
+	// KubeRun contains the configuration for the deprecated kuberun backend. This option can be changed from the config
+	// server.
+	// deprecated: use Kubernetes instead
+	KubeRun kubernetes.KubeRunConfig `json:"kuberun,omitempty" yaml:"kuberun"`
 }
 
 // FixCompatibility moves deprecated options to their new places and issues warnings.
@@ -63,6 +72,67 @@ func (cfg *AppConfig) FixCompatibility(logger log.Logger) error {
 			cfg.Listen = ""
 		} else {
 			logger.Warningf("You are using the 'listen' option deprecated in ContainerSSH 0.4 as well as the new 'ssh -> listen' option. The new option takes precedence. Please see https://containerssh.io/deprecations/listen for details.")
+		}
+	}
+	return nil
+}
+
+// Validate validates the configuration structure and returns an error if it is invalid.
+//
+// - dynamic enables the validation for dynamically configurable options.
+func (cfg *AppConfig) Validate(dynamic bool) error {
+	queue := newValidationQueue()
+	queue.add("SSH", &cfg.SSH)
+	queue.add("config server", &cfg.ConfigServer)
+	queue.add("authentication", &cfg.Auth)
+	queue.add("logging", &cfg.Log)
+	queue.add("metrics", &cfg.Metrics)
+	queue.add("GeoIP", &cfg.GeoIP)
+	queue.add("audit log", &cfg.Audit)
+
+	if cfg.ConfigServer.URL != "" && !dynamic {
+		return queue.Validate()
+	}
+	queue.add("security configuration", &cfg.Security)
+	switch cfg.Backend {
+	case "docker":
+		queue.add("Docker", &cfg.Docker)
+	case "dockerrun":
+		queue.add("DockerRun", &cfg.DockerRun)
+	case "kubernetes":
+		queue.add("Kubernetes", &cfg.Kubernetes)
+	case "kuberun":
+		queue.add("KubeRun", &cfg.KubeRun)
+	case "":
+		return fmt.Errorf("no backend configured")
+	default:
+		return fmt.Errorf("invalid backend: %s", cfg.Backend)
+	}
+	return queue.Validate()
+}
+
+type validatable interface {
+	Validate() error
+}
+
+func newValidationQueue() *validationQueue {
+	return &validationQueue{
+		items: map[string]validatable{},
+	}
+}
+
+type validationQueue struct {
+	items map[string]validatable
+}
+
+func (v *validationQueue) add(name string, item validatable) {
+	v.items[name] = item
+}
+
+func (v *validationQueue) Validate() error {
+	for name, item := range v.items {
+		if err := item.Validate(); err != nil {
+			return fmt.Errorf("invalid %s configuration (%w)", name, err)
 		}
 	}
 	return nil

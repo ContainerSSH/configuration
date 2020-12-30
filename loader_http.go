@@ -44,5 +44,8 @@ func (h *httpLoader) LoadConnection(
 	if err != nil {
 		return err
 	}
-	return structutils.Merge(config, &newAppConfig)
+	if err := structutils.Merge(config, &newAppConfig); err != nil {
+		return err
+	}
+	return nil
 }

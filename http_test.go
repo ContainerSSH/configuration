@@ -5,6 +5,7 @@ import (
 	"net"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/containerssh/geoip"
 	"github.com/containerssh/http"
@@ -46,7 +47,8 @@ func TestHTTP(t *testing.T) {
 	client, err := configuration.NewClient(
 		configuration.ClientConfig{
 			ClientConfiguration: http.ClientConfiguration{
-				URL: "http://127.0.0.1:8080",
+				URL:     "http://127.0.0.1:8080",
+				Timeout: 2 * time.Second,
 			},
 		}, logger, getMetricsCollector(t),
 	)

@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/containerssh/log"
+	"github.com/containerssh/structutils"
 	"github.com/stretchr/testify/assert"
 
 	"github.com/containerssh/configuration"
@@ -35,6 +36,7 @@ func Test03Compatibility(t *testing.T) {
 	assert.NoError(t, err)
 
 	config := configuration.AppConfig{}
+	structutils.Defaults(&config)
 	err = reader.Load(context.Background(), &config)
 	assert.NoError(t, err)
 

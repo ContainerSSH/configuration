@@ -25,7 +25,7 @@ configserver:
   cert: ""
   key: ""
 auth:
-  url: ""
+  url: "http://localhost:8080"
   cacert: ""
   timeout: 2s
   cert: ""

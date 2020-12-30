@@ -45,7 +45,10 @@ func (y *readerLoader) Load(_ context.Context, config *AppConfig) (err error) {
 	if err != nil {
 		return err
 	}
-	return config.FixCompatibility(y.logger)
+	if err := config.FixCompatibility(y.logger); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (y *readerLoader) LoadConnection(
