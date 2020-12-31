@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.7: Bumped Docker, Kubernetes and Metrics dependencies
+
+This release updates the Docker, Kubernetes, and Metrics dependency to the latest releases.
+
 ## 0.9.6: Added Validate()
 
 This release adds a `Validate()` method to the configuration that allows for check the configuration on loading.
