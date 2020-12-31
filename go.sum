@@ -54,8 +54,8 @@ github.com/containerssh/auditlog v0.9.6 h1:ovy6Qq3nQY5CjUd/u2IfJQV3o9Rv7MSxUrZkO
 github.com/containerssh/auditlog v0.9.6/go.mod h1:RFosX/1+kIFHOq/IhcQokZYTra3ZXVThBTYrm3SeAAo=
 github.com/containerssh/auth v0.9.3 h1:4C2uDxrSlxzybqnI2tkVApVU8TSeAg4opDcvEILSUuw=
 github.com/containerssh/auth v0.9.3/go.mod h1:f8ddGlP5+b5dQ82+mxc0b64VWHOKyVa8HqBXfNfyAvw=
-github.com/containerssh/docker v0.9.6 h1:wRWDpoaY6Ix28HKH2XBO1Wib2Ks19dJWkUcD+JWJYpM=
-github.com/containerssh/docker v0.9.6/go.mod h1:yE+fczIlfjhGZsWhsyJ2ARoEuL6L4QzFyDhR5aq/CH4=
+github.com/containerssh/docker v0.9.7 h1:dZvHCefIqjiSVzsXyX9J4729KI8ijI6Ztac0i77rKKk=
+github.com/containerssh/docker v0.9.7/go.mod h1:TU+01NXK0jRcy+nQM6CUgIrgQL51XgEytmDFd6as1Rs=
 github.com/containerssh/geoip v0.9.3 h1:RDj46uxB3Ew7qoTHCUClBDkqULRZJOLxYf/VqPgEuK8=
 github.com/containerssh/geoip v0.9.3/go.mod h1:8fyg4eUrKKY0FDyS7GofI6OO7UXDoG1icRtVAHb510k=
 github.com/containerssh/geoip v0.9.4 h1:ugkbESJpitdObbSHdYNQfpoFJOlvxwNCX2ZHHnlVJzA=
@@ -79,8 +79,6 @@ github.com/containerssh/log v0.9.8/go.mod h1:NBMzkhOLZ4z45ShSBKQ/Ij6Hqqg15DgOKy6
 github.com/containerssh/metrics v0.9.4/go.mod h1:vWSPzmiVZznPBFdPnt89cHzWLuEGiExEmeUkTJRDne0=
 github.com/containerssh/metrics v0.9.5 h1:VGP/bwoY4UhdP8G9h30QWZIf9P31tl9OURYOoZpKIY4=
 github.com/containerssh/metrics v0.9.5/go.mod h1:vWSPzmiVZznPBFdPnt89cHzWLuEGiExEmeUkTJRDne0=
-github.com/containerssh/security v0.9.0 h1:kzL7gHdUsWoz42mLt6Yswf14qIdlo4IOMUI8bq6Kr8c=
-github.com/containerssh/security v0.9.0/go.mod h1:9hXUhtRAUZJpeemCl53OdsR0WZTky2G/L7WTThCdt9w=
 github.com/containerssh/security v0.9.2 h1:GRFXYZ/ThX43GTgICzZ4RtMggwClzs//yqcVIWDaHxY=
 github.com/containerssh/security v0.9.2/go.mod h1:9hXUhtRAUZJpeemCl53OdsR0WZTky2G/L7WTThCdt9w=
 github.com/containerssh/service v0.9.0 h1:JUHqiK12tclq7EWQYGRTfgKKw6fhHs0gxlKWTvVwFlQ=

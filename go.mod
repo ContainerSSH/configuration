@@ -5,7 +5,7 @@ go 1.14
 require (
 	github.com/containerssh/auditlog v0.9.6
 	github.com/containerssh/auth v0.9.3
-	github.com/containerssh/docker v0.9.6
+	github.com/containerssh/docker v0.9.7
 	github.com/containerssh/geoip v0.9.4
 	github.com/containerssh/http v0.9.5
 	github.com/containerssh/kubernetes v0.9.3
