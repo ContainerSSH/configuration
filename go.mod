@@ -15,7 +15,7 @@ require (
 	github.com/containerssh/service v0.9.0
 	github.com/containerssh/sshserver v0.9.14
 	github.com/containerssh/structutils v0.9.0
-	github.com/docker/docker v20.10.1+incompatible
+	github.com/docker/docker v20.10.4+incompatible
 	github.com/google/go-cmp v0.5.4
 	github.com/stretchr/testify v1.6.1
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776
