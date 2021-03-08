@@ -3,7 +3,6 @@ package configuration_test
 import (
 	"bytes"
 	"context"
-	"os"
 	"testing"
 
 	"github.com/containerssh/docker"
@@ -28,15 +27,7 @@ func TestSaveLoadJSON(t *testing.T) {
 
 func testSaveLoad(t *testing.T, format configuration.Format) {
 	// region Setup
-	logger, err := log.New(
-		log.Config{
-			Level:  log.LevelDebug,
-			Format: "text",
-		},
-		"config",
-		os.Stdout,
-	)
-	assert.NoError(t, err)
+	logger := log.NewTestLogger(t)
 
 	config := &configuration.AppConfig{}
 	newCfg := &configuration.AppConfig{}
@@ -75,7 +66,9 @@ func testSaveLoad(t *testing.T, format configuration.Format) {
 		cmp.AllowUnexported(http.ClientConfiguration{}),
 		cmp.AllowUnexported(configuration.ClientConfig{}),
 		cmp.AllowUnexported(kubernetes.PodConfig{}),
+		cmp.AllowUnexported(kubernetes.ConnectionConfig{}),
 		cmp.AllowUnexported(docker.ExecutionConfig{}),
+		cmp.AllowUnexported(log.SyslogConfig{}),
 		cmpopts.EquateEmpty(),
 	)
 	assert.Empty(t, diff)

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.8: New logging
+
+This release adds the new message code based logging.
+
 ## 0.9.7: Bumped Docker, Kubernetes and Metrics dependencies
 
 This release updates the Docker, Kubernetes, and Metrics dependency to the latest releases.

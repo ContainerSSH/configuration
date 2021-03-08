@@ -14,17 +14,9 @@ import (
 
 // Test03Compatibility tests if a configuration file for ContainerSSH version 0.3 can be read.
 func Test03Compatibility(t *testing.T) {
-	logger, err := log.New(
-		log.Config{
-			Level:  log.LevelDebug,
-			Format: "text",
-		},
-		"config",
-		os.Stdout,
-	)
-	assert.NoError(t, err)
+	logger := log.NewTestLogger(t)
 
-	logger.Infof("FYI: the deprecation notice in this test is intentional")
+	logger.Info(log.NewMessage("TEST", "FYI: the deprecation notice in this test is intentional"))
 
 	testFile, err := os.Open("data/0.3.yaml")
 	assert.NoError(t, err)

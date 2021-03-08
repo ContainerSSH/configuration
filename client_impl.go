@@ -3,9 +3,7 @@ package configuration
 import (
 	"context"
 	"errors"
-	"fmt"
 	"net"
-	"strconv"
 	"time"
 
 	"github.com/containerssh/http"
@@ -29,57 +27,43 @@ func (c *client) Get(
 	if c.httpClient == nil {
 		return AppConfig{}, nil
 	}
+	logger := c.logger.
+		WithLabel("connectionId", connectionID).
+		WithLabel("username", username)
 	request, response := c.createRequestResponse(username, remoteAddr, connectionID)
 	var lastError error = nil
 	var lastLabels []metrics.MetricLabel
 loop:
 	for {
 		lastLabels = []metrics.MetricLabel{}
-		c.backendRequestsMetric.Increment()
-		statusCode, err := c.httpClient.Post("", &request, &response)
-		lastError = err
-		if err != nil {
-			clientError := &http.ClientError{}
-			if errors.As(err, clientError) {
-				lastLabels = []metrics.MetricLabel{
-					metrics.Label("type", "soft"),
-					metrics.Label("reason", string(clientError.Reason)),
-				}
-			}
-			c.logger.Warningf("HTTP query to config server failed, retrying in 10 seconds (%v)", err)
-		} else if statusCode != 200 {
-			lastLabels = []metrics.MetricLabel{
-				metrics.Label("type", "soft"),
-				metrics.Label("reason", "invalid_status_code"),
-				metrics.Label("status_code", strconv.Itoa(statusCode)),
-			}
-			lastError = fmt.Errorf("invalid response status %d from config server", statusCode)
-			c.logger.Warningf("invalid response status %d from config server, retrying in 10 seconds", statusCode)
-		}
-		if lastError == nil {
-			break loop
+		if lastError != nil {
+			lastLabels = append(
+				lastLabels,
+				metrics.Label("retry", "1"),
+			)
 		} else {
-			c.backendFailureMetric.Increment(
-				lastLabels...,
+			lastLabels = append(
+				lastLabels,
+				metrics.Label("retry", "0"),
 			)
 		}
+		c.logAttempt(logger, lastLabels)
+
+		lastError = c.configServerRequest(&request, &response)
+		if lastError == nil {
+			c.logConfigResponse(logger)
+			return response.Config, nil
+		}
+		reason := c.getReason(lastError)
+		lastLabels = append(lastLabels, metrics.Label("reason", reason))
+		c.logTemporaryFailure(logger, lastError, reason, lastLabels)
 		select {
 		case <-ctx.Done():
 			break loop
 		case <-time.After(10 * time.Second):
 		}
 	}
-	if lastError != nil {
-		c.logger.Errorf("failed to query config server, giving up. (%v)", lastError)
-		c.backendFailureMetric.Increment(
-			append(
-				[]metrics.MetricLabel{
-					metrics.Label("type", "hard"),
-				}, lastLabels...,
-			)...,
-		)
-	}
-	return response.Config, lastError
+	return c.logAndReturnPermanentFailure(lastError, lastLabels, logger)
 }
 
 func (c *client) createRequestResponse(username string, remoteAddr net.TCPAddr, connectionID string) (
@@ -94,4 +78,96 @@ func (c *client) createRequestResponse(username string, remoteAddr net.TCPAddr, 
 	}
 	response := ConfigResponseBody{}
 	return request, response
+}
+
+func (c *client) logAttempt(logger log.Logger, lastLabels []metrics.MetricLabel) {
+	logger.Debug(
+		log.NewMessage(
+			MConfig,
+			"Configuration request",
+		),
+	)
+	c.backendRequestsMetric.Increment(lastLabels...)
+}
+
+func (c *client) logAndReturnPermanentFailure(
+	lastError error,
+	lastLabels []metrics.MetricLabel,
+	logger log.Logger,
+) (AppConfig, error) {
+	err := log.Wrap(
+		lastError,
+		EConfigBackendError,
+		"Configuration request to backend failed, giving up",
+	)
+	c.backendFailureMetric.Increment(
+		append(
+			[]metrics.MetricLabel{
+				metrics.Label("type", "hard"),
+			}, lastLabels...,
+		)...,
+	)
+	logger.Error(err)
+	return AppConfig{}, err
+}
+
+func (c *client) logTemporaryFailure(
+	logger log.Logger,
+	lastError error,
+	reason string,
+	lastLabels []metrics.MetricLabel,
+) {
+	logger.Debug(
+		log.Wrap(
+			lastError,
+			EConfigBackendError,
+			"Configuration request to backend failed, retrying in 10 seconds",
+		).
+			Label("reason", reason),
+	)
+	c.backendFailureMetric.Increment(
+		append(
+			[]metrics.MetricLabel{
+				metrics.Label("type", "soft"),
+			}, lastLabels...,
+		)...,
+	)
+}
+
+func (c *client) getReason(lastError error) string {
+	var typedErr log.Message
+	reason := log.EUnknownError
+	if errors.As(lastError, &typedErr) {
+		reason = typedErr.Code()
+	}
+	return reason
+}
+
+func (c *client) logConfigResponse(
+	logger log.Logger,
+) {
+	logger.Debug(
+		log.NewMessage(
+			MConfigSuccess,
+			"User-specific configuration received",
+		),
+	)
+}
+
+func (c *client) configServerRequest(requestObject interface{}, response interface{}) error {
+	statusCode, err := c.httpClient.Post("", requestObject, response)
+	if err != nil {
+		return err
+	}
+	if statusCode != 200 {
+		return log.UserMessage(
+			EInvalidStatus,
+			// The message indicates authentication because the config server is
+			// called at config-time.
+			"Cannot authenticate at this time.",
+			"Configuration server responded with an invalid status code: %d",
+			statusCode,
+		)
+	}
+	return nil
 }

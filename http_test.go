@@ -3,7 +3,6 @@ package configuration_test
 import (
 	"context"
 	"net"
-	"os"
 	"testing"
 	"time"
 
@@ -19,11 +18,7 @@ import (
 )
 
 func TestHTTP(t *testing.T) {
-	logger, err := log.New(log.Config{
-		Level:  log.LevelDebug,
-		Format: "text",
-	}, "config", os.Stdout)
-	assert.NoError(t, err)
+	logger := log.NewTestLogger(t)
 	srv, err := configuration.NewServer(
 		http.ServerConfiguration{
 			Listen: "127.0.0.1:8080",
