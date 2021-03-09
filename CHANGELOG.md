@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.9: Startup message
+
+This release adds a message when the configuration server is started.
+
 ## 0.9.8: New logging
 
 This release adds the new message code based logging.

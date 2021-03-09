@@ -21,5 +21,8 @@ func NewServer(
 		configuration,
 		handler,
 		logger,
+		func(url string) {
+			logger.Info(log.NewMessage(MAvailable, "The configuration server is now available at %s", url))
+		},
 	)
 }
