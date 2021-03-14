@@ -6,7 +6,7 @@ import (
 
 //noinspection GoNameStartsWithPackageName
 type ClientConfig struct {
-	http.ClientConfiguration `yaml:",inline"`
+	http.ClientConfiguration `json:",inline" yaml:",inline"`
 }
 
 // Validate validates the client configuration.

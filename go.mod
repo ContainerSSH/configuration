@@ -11,7 +11,7 @@ require (
 	github.com/containerssh/kubernetes v0.9.8
 	github.com/containerssh/log v0.9.13
 	github.com/containerssh/metrics v0.9.8
-	github.com/containerssh/security v0.9.7
+	github.com/containerssh/security v0.9.8
 	github.com/containerssh/service v0.9.3
 	github.com/containerssh/sshserver v0.9.19
 	github.com/containerssh/structutils v0.9.0
