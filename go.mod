@@ -13,7 +13,7 @@ require (
 	github.com/containerssh/metrics v0.9.8
 	github.com/containerssh/security v0.9.8
 	github.com/containerssh/service v0.9.3
-	github.com/containerssh/sshserver v0.9.19
+	github.com/containerssh/sshserver v0.9.20
 	github.com/containerssh/structutils v0.9.0
 	github.com/docker/docker v20.10.5+incompatible
 	github.com/google/go-cmp v0.5.5
