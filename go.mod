@@ -15,7 +15,7 @@ require (
 	github.com/containerssh/metrics v0.9.8
 	github.com/containerssh/security v0.9.8
 	github.com/containerssh/service v0.9.3
-	github.com/containerssh/sshserver v0.9.20
+	github.com/containerssh/sshserver v0.9.23
 	github.com/containerssh/structutils v0.9.0
 	github.com/docker/docker v20.10.5+incompatible
 	github.com/docker/spdystream v0.1.0 // indirect
@@ -24,13 +24,11 @@ require (
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/googleapis/gnostic v0.5.4 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
-	github.com/magefile/mage v1.11.0 // indirect
 	github.com/oschwald/geoip2-golang v1.5.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4 // indirect
 	golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84 // indirect
-	golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 // indirect
 	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20210322173543-5f0e89347f5a // indirect
