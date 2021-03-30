@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.10: SSH proxy backend
+
+This release adds the new [SSH proxy backend](https://github.com/containerssh/sshproxy).
+
 ## 0.9.9: Startup message
 
 This release adds a message when the configuration server is started.

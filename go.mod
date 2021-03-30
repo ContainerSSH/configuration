@@ -3,37 +3,37 @@ module github.com/containerssh/configuration
 go 1.14
 
 require (
-	github.com/aws/aws-sdk-go v1.38.2 // indirect
+	github.com/aws/aws-sdk-go v1.38.9 // indirect
 	github.com/containerd/containerd v1.4.4 // indirect
 	github.com/containerssh/auditlog v0.9.9
 	github.com/containerssh/auth v0.9.6
-	github.com/containerssh/docker v0.9.11
+	github.com/containerssh/docker v0.9.12
 	github.com/containerssh/geoip v0.9.4
 	github.com/containerssh/http v0.9.9
-	github.com/containerssh/kubernetes v0.9.8
+	github.com/containerssh/kubernetes v0.9.9
 	github.com/containerssh/log v0.9.13
 	github.com/containerssh/metrics v0.9.8
 	github.com/containerssh/security v0.9.8
 	github.com/containerssh/service v0.9.3
-	github.com/containerssh/sshserver v0.9.20
+	github.com/containerssh/sshproxy v0.9.0
+	github.com/containerssh/sshserver v0.9.24
 	github.com/containerssh/structutils v0.9.0
 	github.com/docker/docker v20.10.5+incompatible
 	github.com/docker/spdystream v0.1.0 // indirect
-	github.com/golang/protobuf v1.5.1 // indirect
+	github.com/fzipp/gocyclo v0.3.1 // indirect
 	github.com/google/go-cmp v0.5.5
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/googleapis/gnostic v0.5.4 // indirect
+	github.com/gordonklaus/ineffassign v0.0.0-20200809085317-e36bfde3bb78 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
 	github.com/magefile/mage v1.11.0 // indirect
 	github.com/oschwald/geoip2-golang v1.5.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/stretchr/testify v1.7.0
-	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4 // indirect
-	golang.org/x/oauth2 v0.0.0-20210313182246-cd4f82c27b84 // indirect
-	golang.org/x/sys v0.0.0-20210320140829-1e4c9ba3b0c4 // indirect
+	golang.org/x/net v0.0.0-20210330210036-cd0ac97f97f6 // indirect
+	golang.org/x/oauth2 v0.0.0-20210323180902-22b0adad7558 // indirect
 	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
-	google.golang.org/genproto v0.0.0-20210322173543-5f0e89347f5a // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 	k8s.io/client-go v0.20.5 // indirect
 	k8s.io/klog/v2 v2.8.0 // indirect

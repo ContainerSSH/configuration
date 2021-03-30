@@ -11,6 +11,7 @@ import (
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
 	"github.com/containerssh/security"
+	"github.com/containerssh/sshproxy"
 	"github.com/containerssh/sshserver"
 )
 
@@ -61,17 +62,25 @@ type AppConfig struct {
 	// server.
 	// deprecated: use Kubernetes instead
 	KubeRun kubernetes.KubeRunConfig `json:"kuberun,omitempty" yaml:"kuberun"`
+	// SSHProxy is the configuration for the SSH proxy backend, which forwards requests to a backing SSH server.
+	SSHProxy sshproxy.Config `json:"sshproxy,omitempty" yaml:"sshproxy"`
 }
 
 // FixCompatibility moves deprecated options to their new places and issues warnings.
 func (cfg *AppConfig) FixCompatibility(logger log.Logger) error {
 	if cfg.Listen != "" {
 		if cfg.SSH.Listen == "" || cfg.SSH.Listen == "0.0.0.0:2222" {
-			logger.Warningf("You are using the 'listen' option deprecated in ContainerSSH 0.4. Please use the new 'ssh -> listen' option. See https://containerssh.io/deprecations/listen for details.")
+			logger.Warning(log.NewMessage(
+				WListenDeprecated,
+				"You are using the 'listen' option deprecated in ContainerSSH 0.4. Please use the new 'ssh -> listen' option. See https://containerssh.io/deprecations/listen for details.",
+			))
 			cfg.SSH.Listen = cfg.Listen
 			cfg.Listen = ""
 		} else {
-			logger.Warningf("You are using the 'listen' option deprecated in ContainerSSH 0.4 as well as the new 'ssh -> listen' option. The new option takes precedence. Please see https://containerssh.io/deprecations/listen for details.")
+			logger.Warning(log.NewMessage(
+				WListenDeprecated,
+				"You are using the 'listen' option deprecated in ContainerSSH 0.4 as well as the new 'ssh -> listen' option. The new option takes precedence. Please see https://containerssh.io/deprecations/listen for details.",
+			))
 		}
 	}
 	return nil
@@ -103,6 +112,8 @@ func (cfg *AppConfig) Validate(dynamic bool) error {
 		queue.add("Kubernetes", &cfg.Kubernetes)
 	case "kuberun":
 		queue.add("KubeRun", &cfg.KubeRun)
+	case "sshproxy":
+		queue.add("SSH proxy", &cfg.SSHProxy)
 	case "":
 		return fmt.Errorf("no backend configured")
 	default:

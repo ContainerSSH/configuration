@@ -18,3 +18,6 @@ const EInvalidStatus = "CONFIG_INVALID_STATUS_CODE"
 
 // The ContainerSSH configuration server is now available at the specified address.
 const MAvailable = "CONFIG_SERVER_AVAILABLE"
+
+// The Listen option in the root configuration is deprecated since ContainerSSH 0.4. See https://containerssh.io/deprecations/listen for details.
+const WListenDeprecated = "CONFIG_LISTEN_DEPRECATED"
