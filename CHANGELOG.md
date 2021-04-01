@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0: First stable release
+
+This is the first stable release for ContainerSSH 0.4.0.
+
 ## 0.9.10: SSH proxy backend
 
 This release adds the new [SSH proxy backend](https://github.com/containerssh/sshproxy).
