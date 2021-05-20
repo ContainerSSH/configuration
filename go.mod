@@ -16,7 +16,7 @@ require (
 	github.com/containerssh/security v1.0.0
 	github.com/containerssh/service v1.0.0
 	github.com/containerssh/sshproxy v1.0.0
-	github.com/containerssh/sshserver v1.0.0
+	github.com/containerssh/sshserver/v2 v2.0.0-alpha.1
 	github.com/containerssh/structutils v1.0.0
 	github.com/docker/docker v20.10.6+incompatible
 	github.com/google/go-cmp v0.5.5

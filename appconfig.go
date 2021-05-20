@@ -13,7 +13,7 @@ import (
 	"github.com/containerssh/metrics"
 	"github.com/containerssh/security"
 	"github.com/containerssh/sshproxy"
-	"github.com/containerssh/sshserver"
+	sshserver "github.com/containerssh/sshserver/v2"
 )
 
 // AppConfig is the root configuration object of ContainerSSH.
