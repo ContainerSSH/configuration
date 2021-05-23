@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0: Bugfixes
+
+This release fixes bugs introduced with the ContainerSSH 0.4.0 version in the Docker and Kubernetes libraries where configuration encoding/decoding didn't work properly. This is a backwards-incompatible change with respect to those libraries.
+
 ## 1.0.0: First stable release
 
 This is the first stable release for ContainerSSH 0.4.0.
