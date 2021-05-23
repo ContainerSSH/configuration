@@ -1,4 +1,4 @@
-module github.com/containerssh/configuration
+module github.com/containerssh/configuration/v2
 
 go 1.16
 
@@ -7,6 +7,7 @@ require (
 	github.com/containerd/containerd v1.5.2 // indirect
 	github.com/containerssh/auditlog v1.0.0
 	github.com/containerssh/auth v1.0.0
+	github.com/containerssh/configuration v1.0.0
 	github.com/containerssh/docker v1.0.0
 	github.com/containerssh/geoip v1.0.0
 	github.com/containerssh/http v1.1.0
