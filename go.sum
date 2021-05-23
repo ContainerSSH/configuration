@@ -196,8 +196,9 @@ github.com/containers/ocicrypt v1.1.0/go.mod h1:b8AOe0YR67uU8OqfVNcznfFpAzu3rdgU
 github.com/containers/ocicrypt v1.1.1/go.mod h1:Dm55fwWm1YZAjYRaJ94z2mfZikIyIN4B0oB3dj3jFxY=
 github.com/containerssh/auditlog v1.0.0 h1:uEMySNXHnXtTD2+Ai+SUei+hGuzsISFJbHvgQ2YQXYA=
 github.com/containerssh/auditlog v1.0.0/go.mod h1:UoI22Q46jFIa/WsYis+4uAt+TSBAOG+SN4iDiGYj2GU=
-github.com/containerssh/auth v1.0.0 h1:6ZlLfj7+WsNIc5xJpdwoWvxgyVA19BQqzEtXYCfdkRA=
 github.com/containerssh/auth v1.0.0/go.mod h1:EHYcedk9tDAK+5YvB6thc8WDmAaqNmki+E9VQYfI7MU=
+github.com/containerssh/auth v1.0.1 h1:GH77x9qLxuXpURsNDsZYIIadwMCqm8wUnXfZ1Fs3hVM=
+github.com/containerssh/auth v1.0.1/go.mod h1:EHYcedk9tDAK+5YvB6thc8WDmAaqNmki+E9VQYfI7MU=
 github.com/containerssh/configuration v1.0.0 h1:zB6fYPIdrymPK/8cvTe0nDyZ3EHGQwh+x7cBYMUYqvA=
 github.com/containerssh/configuration v1.0.0/go.mod h1:l7vON1x4NscyaVD8nl+kbBeCBgXNkc2VjkLlHC1W50c=
 github.com/containerssh/docker v1.0.0 h1:fyXzSntVXXuBSboRqARy9t1maoNLK1HOhqrQHRUreaU=
