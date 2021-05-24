@@ -14,7 +14,7 @@ import (
 	"github.com/docker/docker/api/types/container"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/containerssh/configuration"
+	"github.com/containerssh/configuration/v2"
 )
 
 func TestHTTP(t *testing.T) {

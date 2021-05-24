@@ -5,16 +5,16 @@ import (
 	"context"
 	"testing"
 
-	"github.com/containerssh/docker"
+	"github.com/containerssh/docker/v2"
 	"github.com/containerssh/http"
-	"github.com/containerssh/kubernetes"
+	"github.com/containerssh/kubernetes/v2"
 	"github.com/containerssh/log"
 	"github.com/containerssh/structutils"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/containerssh/configuration"
+	"github.com/containerssh/configuration/v2"
 )
 
 func TestSaveLoadYAML(t *testing.T) {

@@ -5,9 +5,9 @@ import (
 
 	"github.com/containerssh/auditlog"
 	"github.com/containerssh/auth"
-	"github.com/containerssh/docker"
+	"github.com/containerssh/docker/v2"
 	"github.com/containerssh/geoip"
-	"github.com/containerssh/kubernetes"
+	"github.com/containerssh/kubernetes/v2"
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
 	"github.com/containerssh/security"

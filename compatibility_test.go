@@ -9,7 +9,7 @@ import (
 	"github.com/containerssh/structutils"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/containerssh/configuration"
+	"github.com/containerssh/configuration/v2"
 )
 
 // Test03Compatibility tests if a configuration file for ContainerSSH version 0.3 can be read.

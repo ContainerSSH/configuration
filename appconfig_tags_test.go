@@ -1,16 +1,18 @@
-package configuration
+package configuration_test
 
 import (
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/containerssh/configuration/v2"
 )
 
 // TestOperatorCompatibility is a test that tries to create compatibility with the Kubernetes operator
 // SDK. We cannot create full compatibility because several external libraries don't adhere to this standard.
 // Therefore, we exclude the Kubernetes and Docker backends from this check.
 func TestOperatorCompatibility(t *testing.T) {
-	appConfig := AppConfig{}
+	appConfig := configuration.AppConfig{}
 	v := reflect.TypeOf(appConfig)
 	verify(v, t, []string{"AppConfig"})
 }
