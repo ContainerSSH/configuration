@@ -7,6 +7,7 @@ import (
 	"github.com/containerssh/auth"
 	"github.com/containerssh/docker/v2"
 	"github.com/containerssh/geoip"
+	"github.com/containerssh/health"
 	"github.com/containerssh/kubernetes/v2"
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
@@ -43,6 +44,8 @@ type AppConfig struct {
 	// Audit contains the configuration for audit logging and log upload.
 	// swagger:ignore
 	Audit auditlog.Config `json:"audit" yaml:"audit"`
+	// Health contains the configuration for the health check service.
+	Health health.Config `json:"health" yaml:"health"`
 
 	// Security contains the security restrictions on what can be executed. This option can be changed from the config
 	// server.

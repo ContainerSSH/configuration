@@ -5,8 +5,10 @@ go 1.16
 require (
 	github.com/containerssh/auditlog v1.0.0
 	github.com/containerssh/auth v1.0.1
+	github.com/containerssh/docker v1.0.0 // indirect
 	github.com/containerssh/docker/v2 v2.0.1
 	github.com/containerssh/geoip v1.0.0
+	github.com/containerssh/health v1.0.1
 	github.com/containerssh/http v1.1.0
 	github.com/containerssh/kubernetes/v2 v2.0.1
 	github.com/containerssh/log v1.1.6

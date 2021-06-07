@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0: Add health check configuration
+
+Configuration options for the [health check service](https://github.com/containerssh/health) added.
+
 ## 2.0.1: Bugfixes
 
 This release fixes the previous release which still depended on old Docker and Kubernetes libraries.
