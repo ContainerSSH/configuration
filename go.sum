@@ -224,8 +224,9 @@ github.com/containerssh/sshproxy v1.0.0 h1:sm77ZzWrwT3urTGPDnHMM9D/vNdAt5/lh8Ix4
 github.com/containerssh/sshproxy v1.0.0/go.mod h1:zzfzP7MhTAUTM2Pxhjd+DArjxstgRWlS6BQsNrwu6zo=
 github.com/containerssh/sshserver v1.0.0 h1:BWVngzeQH+gFHVcuJ4tb3iCQg1X8CKnOhF7mLt0V70c=
 github.com/containerssh/sshserver v1.0.0/go.mod h1:/gIyl45eM171tg8psNAxSjYsyvW9hclAeG/buO7I40g=
-github.com/containerssh/structutils v1.0.0 h1:XwNSnjmoJpMP8hxX5YbDJRGcU66znRWP5jKUYI2Kh4s=
 github.com/containerssh/structutils v1.0.0/go.mod h1:Dp5tCtnkT19A9BFNP4+flL5R+THvBgp95eO640fR+ow=
+github.com/containerssh/structutils v1.1.0 h1:vG+m3Pf73YZctMdpg6TmZejArhGnKACYCPm6r396hm8=
+github.com/containerssh/structutils v1.1.0/go.mod h1:I9U5+GGikYxWHrRkeQukiQ4zKqi90Ej2Ttgmvryflc4=
 github.com/containerssh/unixutils v1.0.0 h1:V6zwRxOycwpXY3hjjzFVfgV/4vOsqPVJ63rR2V7EYM8=
 github.com/containerssh/unixutils v1.0.0/go.mod h1:UK2dMXp9Iy2ILHrcrzOU5jWZDgPkuChyg75wrdcIZjU=
 github.com/coreos/bbolt v1.3.2/go.mod h1:iRUV2dpdMOn7Bo10OQBFzIJO9kkE559Wcmn+qkEiiKk=
