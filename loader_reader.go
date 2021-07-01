@@ -56,6 +56,7 @@ func (y *readerLoader) LoadConnection(
 	_ string,
 	_ net.TCPAddr,
 	_ string,
+	_ map[string]string,
 	_ *AppConfig,
 ) error {
 	return nil

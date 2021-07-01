@@ -20,6 +20,10 @@ type ConfigRequest struct {
 	//
 	// required: true
 	SessionID string `json:"sessionId"`
+	// Metadata is the metadata received from the authentication server.
+	//
+	// required: false
+	Metadata map[string]string `json:"metadata"`
 }
 
 // ConfigResponseBody is the structure representing the JSON HTTP response.

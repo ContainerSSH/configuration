@@ -4,19 +4,18 @@ go 1.16
 
 require (
 	github.com/containerssh/auditlog v1.0.0
-	github.com/containerssh/auth v1.0.1
-	github.com/containerssh/docker v1.0.0 // indirect
-	github.com/containerssh/docker/v2 v2.0.1
+	github.com/containerssh/auth/v2 v2.0.0
+	github.com/containerssh/docker/v3 v3.0.0
 	github.com/containerssh/geoip v1.0.0
-	github.com/containerssh/health v1.0.1
+	github.com/containerssh/health v1.1.0
 	github.com/containerssh/http v1.1.0
-	github.com/containerssh/kubernetes/v2 v2.0.1
+	github.com/containerssh/kubernetes/v3 v3.0.0
 	github.com/containerssh/log v1.1.6
 	github.com/containerssh/metrics v1.0.0
-	github.com/containerssh/security v1.0.0
+	github.com/containerssh/security/v2 v2.0.0
 	github.com/containerssh/service v1.0.0
-	github.com/containerssh/sshproxy v1.0.0
-	github.com/containerssh/sshserver/v2 v2.0.0-alpha.1
+	github.com/containerssh/sshproxy/v2 v2.0.0
+	github.com/containerssh/sshserver/v2 v2.0.0
 	github.com/containerssh/structutils v1.0.0
 	github.com/docker/docker v20.10.6+incompatible
 	github.com/google/go-cmp v0.5.5
@@ -50,3 +49,11 @@ replace (
 	gopkg.in/yaml.v2 v2.2.6 => gopkg.in/yaml.v2 v2.2.8
 	gopkg.in/yaml.v2 v2.2.7 => gopkg.in/yaml.v2 v2.2.8
 )
+
+replace github.com/containerssh/auth/v2 v2.0.0 => ../auth
+replace github.com/containerssh/sshproxy/v2 v2.0.0 => ../sshproxy
+replace github.com/containerssh/sshserver/v2 v2.0.0 => ../sshserver
+replace github.com/containerssh/security/v2 v2.0.0 => ../security
+replace github.com/containerssh/docker/v3 v3.0.0 => ../docker
+replace github.com/containerssh/kubernetes/v3 v3.0.0 => ../kubernetes
+

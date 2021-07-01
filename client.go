@@ -13,5 +13,6 @@ type Client interface {
 		username string,
 		remoteAddr net.TCPAddr,
 		connectionID string,
+		metadata map[string]string,
 	) (AppConfig, error)
 }

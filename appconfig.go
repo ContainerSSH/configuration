@@ -4,16 +4,16 @@ import (
 	"fmt"
 
 	"github.com/containerssh/auditlog"
-	"github.com/containerssh/auth"
-	"github.com/containerssh/docker/v2"
+	"github.com/containerssh/auth/v2"
+	"github.com/containerssh/docker/v3"
 	"github.com/containerssh/geoip"
 	"github.com/containerssh/health"
-	"github.com/containerssh/kubernetes/v2"
+	"github.com/containerssh/kubernetes/v3"
 	"github.com/containerssh/log"
 	"github.com/containerssh/metrics"
-	"github.com/containerssh/security"
-	"github.com/containerssh/sshproxy"
-	sshserver "github.com/containerssh/sshserver/v2"
+	"github.com/containerssh/security/v2"
+	"github.com/containerssh/sshproxy/v2"
+	"github.com/containerssh/sshserver/v2"
 )
 
 // AppConfig is the root configuration object of ContainerSSH.
@@ -101,6 +101,7 @@ func (cfg *AppConfig) Validate(dynamic bool) error {
 	queue.add("metrics", &cfg.Metrics)
 	queue.add("GeoIP", &cfg.GeoIP)
 	queue.add("audit log", &cfg.Audit)
+	queue.add("health", &cfg.Health)
 
 	if cfg.ConfigServer.URL != "" && !dynamic {
 		return queue.Validate()

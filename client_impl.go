@@ -23,6 +23,7 @@ func (c *client) Get(
 	username string,
 	remoteAddr net.TCPAddr,
 	connectionID string,
+	metadata map[string]string,
 ) (AppConfig, error) {
 	if c.httpClient == nil {
 		return AppConfig{}, nil
@@ -30,7 +31,7 @@ func (c *client) Get(
 	logger := c.logger.
 		WithLabel("connectionId", connectionID).
 		WithLabel("username", username)
-	request, response := c.createRequestResponse(username, remoteAddr, connectionID)
+	request, response := c.createRequestResponse(username, remoteAddr, connectionID, metadata)
 	var lastError error = nil
 	var lastLabels []metrics.MetricLabel
 loop:
@@ -66,15 +67,18 @@ loop:
 	return c.logAndReturnPermanentFailure(lastError, lastLabels, logger)
 }
 
-func (c *client) createRequestResponse(username string, remoteAddr net.TCPAddr, connectionID string) (
-	ConfigRequest,
-	ConfigResponseBody,
-) {
+func (c *client) createRequestResponse(
+	username string,
+	remoteAddr net.TCPAddr,
+	connectionID string,
+	metadata map[string]string,
+) (ConfigRequest, ConfigResponseBody,) {
 	request := ConfigRequest{
 		Username:     username,
 		RemoteAddr:   remoteAddr.IP.String(),
 		ConnectionID: connectionID,
 		SessionID:    connectionID,
+		Metadata:     metadata,
 	}
 	response := ConfigResponseBody{}
 	return request, response

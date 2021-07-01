@@ -28,6 +28,7 @@ type Loader interface {
 		username string,
 		remoteAddr net.TCPAddr,
 		connectionID string,
+		metadata map[string]string,
 		config *AppConfig,
 	) error
 }

@@ -59,6 +59,7 @@ func TestHTTP(t *testing.T) {
 			Port: 2222,
 		},
 		connectionID,
+		nil,
 	)
 	assert.NoError(t, err)
 	assert.Equal(t, "yourcompany/yourimage", config.Docker.Execution.Launch.ContainerConfig.Image)

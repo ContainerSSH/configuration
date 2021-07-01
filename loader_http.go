@@ -38,9 +38,10 @@ func (h *httpLoader) LoadConnection(
 	username string,
 	remoteAddr net.TCPAddr,
 	connectionID string,
+	metadata map[string]string,
 	config *AppConfig,
 ) error {
-	newAppConfig, err := h.client.Get(ctx, username, remoteAddr, connectionID)
+	newAppConfig, err := h.client.Get(ctx, username, remoteAddr, connectionID, metadata)
 	if err != nil {
 		return err
 	}
