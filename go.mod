@@ -9,7 +9,7 @@ require (
 	github.com/containerssh/docker/v2 v2.0.1
 	github.com/containerssh/geoip v1.0.0
 	github.com/containerssh/health v1.0.1
-	github.com/containerssh/http v1.1.0
+	github.com/containerssh/http v1.3.0
 	github.com/containerssh/kubernetes/v2 v2.0.1
 	github.com/containerssh/log v1.1.6
 	github.com/containerssh/metrics v1.0.0
@@ -17,7 +17,7 @@ require (
 	github.com/containerssh/service v1.0.0
 	github.com/containerssh/sshproxy v1.0.0
 	github.com/containerssh/sshserver v1.0.0
-	github.com/containerssh/structutils v1.0.0
+	github.com/containerssh/structutils v1.1.0
 	github.com/docker/docker v20.10.6+incompatible
 	github.com/google/go-cmp v0.5.5
 	github.com/stretchr/testify v1.7.0
